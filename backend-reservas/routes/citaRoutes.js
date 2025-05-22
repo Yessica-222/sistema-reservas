@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const verificarToken = require('../middleware/verificarToken');
+const verificarToken = require('../middlewares/verificarToken');
 const citaController = require('../controllers/citaController');
 
 router.get('/', verificarToken, citaController.obtenerCitas);
