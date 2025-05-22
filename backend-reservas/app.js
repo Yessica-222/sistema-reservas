@@ -11,6 +11,19 @@ sequelize.authenticate()
   .then(() => console.log('✅ Conexión a MySQL establecida correctamente.'))
   .catch(err => console.error('❌ Error al conectar a la base de datos:', err));
 
+// Importa modelos y sincroniza tablas
+require('./models');
+
+// Rutas
+const authRoutes = require('./routes/authRoutes');
+const servicioRoutes = require('./routes/servicioRoutes');
+const citaRoutes = require('./routes/citaRoutes');
+
+// Usar rutas
+app.use('/api/auth', authRoutes);
+app.use('/api/servicios', servicioRoutes);
+app.use('/api/citas', citaRoutes);
+
 // Puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
